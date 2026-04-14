@@ -23,7 +23,7 @@ For simplicity, this demo uses:
 
 This ensures deterministic bidirectional communication using static routing.
 
-This demo follows the O-RAN SC RMR model where routing is based on **message type** rather than direct IP addressing. A static route table is loaded using `RMR_SEED_RT`, while `RMR_RTG_SVC=-1` disables the Route Manager for standalone local testing. 
+This demo follows the O-RAN SC RMR model where routing is based on **message type** rather than direct IP addressing. A static route table is loaded using `RMR_SEED_RT`, while `RMR_RTG_SVC=-1` disables the Route Manager for standalone local testing.
 
 ## Repository Structure
 
@@ -35,7 +35,7 @@ This demo follows the O-RAN SC RMR model where routing is based on **message typ
 
 ## Prerequisites
 
-You already have the key platform steps documented in your command notes: local kind cluster, RIC deployment repo, and RIC namespaces such as `ricplt`, `ricinfra`, and `ricxapp`. fileciteturn0file1L1-L31
+You already have the key platform steps documented in your command notes: local kind cluster, RIC deployment repo, and RIC namespaces such as `ricplt`, `ricinfra`, and `ricxapp`.
 
 Before running this demo, confirm:
 1. Docker works.
@@ -58,7 +58,7 @@ cd xapp-xapp-rmr-demo
 docker build -t hello-xapp-rmr:latest .
 ```
 
-If the `rmr_<version>_amd64.deb` download in the Dockerfile fails, update `RMR_VER` to a package version that exists in packagecloud for your lab release. The reason this Dockerfile installs a Debian package is that the Python wrapper depends on the **RMR shared library** being present in the image. citeturn453570search1turn847774search4
+If the `rmr_<version>_amd64.deb` download in the Dockerfile fails, update `RMR_VER` to a package version that exists in packagecloud for your lab release. The reason this Dockerfile installs a Debian package is that the Python wrapper depends on the **RMR shared library** being present in the image.
 
 ### 3) Load the image into kind
 
@@ -134,3 +134,8 @@ That proves the request-reply path through RMR is working.
 - `RMR_RTG_SVC=-1` disables Route Manager for standalone testing
 - Communication is based entirely on **message types**, not IP addresses
 - The Python implementation uses the official `ricxappframe.rmr` bindings
+
+## References
+
+- RMR (RIC Message Router) User Guide — O-RAN Software Community:  
+  https://docs.o-ran-sc.org/projects/o-ran-sc-ric-plt-lib-rmr/en/latest/user-guide.html
