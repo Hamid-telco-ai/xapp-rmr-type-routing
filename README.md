@@ -137,5 +137,5 @@ That proves the request-reply path through RMR is working.
 
 ## References
 
-- RMR (RIC Message Router) User Guide — O-RAN Software Community:  
-  https://docs.o-ran-sc.org/projects/o-ran-sc-ric-plt-lib-rmr/en/latest/user-guide.html
+RMR (RIC Message Router) User Guide — O-RAN Software Community:  
+https://docs.o-ran-sc.org/projects/o-ran-sc-ric-plt-lib-rmr/en/latest/user-guide.html
