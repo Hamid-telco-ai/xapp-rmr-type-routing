@@ -109,24 +109,27 @@ In terminal 2:
 kubectl logs -n ricxapp deploy/hello-b -f
 ```
 
-### 9) Expected success pattern
+## Sample Output
 
-`hello` should print lines like:
+### Sender xApp (`hello`)
 
-```text
-PING sent: mtype=10000 seq=1 txid=... state=0 tp_state=0
-PONG received: mtype=10001 body=... txid=...
+```
+PING sent: mtype=10000 seq=1 state=0 tp_state=0
+PONG received: mtype=10001 payload={"type": "pong", "got": "..."} state=0 tp_state=0
+
+PING sent: mtype=10000 seq=2 state=0 tp_state=0
+PONG received: mtype=10001 payload={"type": "pong", "got": "..."} state=0 tp_state=0
 ```
 
-`hello-b` should print lines like:
+### Responder xApp (`hello-b`)
 
-```text
-PING received: mtype=10000 body=... txid=...
-PONG sent: mtype=10001 txid=... state=0 tp_state=0
 ```
+PING received: mtype=10000 payload={"type": "ping", "seq": 1} state=0 tp_state=0
+PONG sent: mtype=10001 state=0 tp_state=0
 
-That proves the request-reply path through RMR is working.
-
+PING received: mtype=10000 payload={"type": "ping", "seq": 2} state=0 tp_state=0
+PONG sent: mtype=10001 state=0 tp_state=0
+```
 
 ## Notes
 
