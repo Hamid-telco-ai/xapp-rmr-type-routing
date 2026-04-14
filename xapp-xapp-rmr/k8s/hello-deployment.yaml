@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello
+  namespace: ricxapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+        - name: hello
+          image: hello-xapp-rmr:latest
+          imagePullPolicy: IfNotPresent
+          command: ["python", "/app/hello.py"]
+          env:
+            - name: APP_NAME
+              value: hello
+            - name: RMR_PORT
+              value: "4560"
+            - name: PING_MTYPE
+              value: "10000"
+            - name: PONG_MTYPE
+              value: "10001"
+            - name: RMR_SEED_RT
+              value: /app/routes.rtg
+            - name: RMR_RTG_SVC
+              value: "-1"
+          ports:
+            - containerPort: 4560
+              protocol: TCP
+          volumeMounts:
+            - name: routes
+              mountPath: /app/routes.rtg
+              subPath: routes.rtg
+      volumes:
+        - name: routes
+          configMap:
+            name: hello-routes

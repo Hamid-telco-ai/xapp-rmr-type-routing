@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hello-routes
+  namespace: ricxapp
+data:
+  routes.rtg: |
+    newrt|start|demo
+    mse|10000|-1|hello-b:4560
+    mse|10001|-1|hello:4560
+    newrt|end|2
