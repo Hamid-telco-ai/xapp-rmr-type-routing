@@ -25,14 +25,6 @@ This ensures deterministic bidirectional communication using static routing.
 
 This demo follows the O-RAN SC RMR model where routing is based on **message type** rather than direct IP addressing. A static route table is loaded using `RMR_SEED_RT`, while `RMR_RTG_SVC=-1` disables the Route Manager for standalone local testing.
 
-## Key Difference: Message-Type Routing vs RTS
-
-| Feature            | Message-Type Routing              | Return-To-Sender (RTS)         |
-|--------------------|----------------------------------|--------------------------------|
-| Routing logic      | Based on `mtype`                 | Based on sender context        |
-| Communication      | One-to-many                      | One-to-one                     |
-| Response path      | Not guaranteed                   | Automatic return to sender     |
-| Behavior in demo   | Message is consumed by receiver  | Request → Response loop        |
 
 ## Repository Structure
 
